@@ -4,6 +4,7 @@
   (s/defschema Category {
     :id                 Integer
     :name               String
+    :description        String
   })
   
   
