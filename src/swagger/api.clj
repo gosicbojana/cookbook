@@ -3,6 +3,8 @@
               [ring.util.http-response :refer :all]
               [domain.recipe :refer :all]
               [queries.recipe_query :refer :all]
+              [domain.category :refer :all]
+              [queries.category_query :refer :all]
     )
 )
   
