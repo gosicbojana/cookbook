@@ -1,5 +1,6 @@
 (ns domain.recipe
-    (:require [schema.core :as s]))
+    (:require [schema.core :as s]
+              [ring.swagger.schema :refer [coerce!]]))
   
   (s/defschema Recipe {
     :id                 Integer
@@ -9,5 +10,8 @@
     :nutritionalValue   Double
     :categoryId         Integer
   })
+
+
+  (s/defschema NewRecipe (dissoc Recipe :id))
   
   
