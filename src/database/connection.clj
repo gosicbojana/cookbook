@@ -4,9 +4,9 @@
   (def db-connection-info (korma/mysql 
     {:classname "com.mysql.jdbc.Driver"
      :subprotocol "mysql"
-     :user "bojana"
+     :user "root"
      :password "bojana"
-     :subname "//localhost:3306/recipes"}))
+     :subname "//localhost:3306/closurerecipes"}))
   
   ; set up korma
   (korma/defdb db db-connection-info)

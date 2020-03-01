@@ -10,7 +10,7 @@
                 [ring/ring-json "0.4.0"]
                 [ring/ring-defaults "0.3.1"]
                 [korma "0.4.3"]
-                [mysql/mysql-connector-java "5.1.6"]
+                [mysql/mysql-connector-java "8.0.19"]
                 [metosin/compojure-api "2.0.0-alpha19"]
                 [org.clojure/core.unify "0.5.7"]]
   :ring {:handler swagger.api/app}
