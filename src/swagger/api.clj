@@ -71,5 +71,56 @@
           )
         )
       )
+ 
+    (context "/categories" []
+        :tags ["categories"]
+
+        (GET "/" []
+          :return [Category]
+          :summary "Gets all categories"
+          (ok (get-categories))
+        )
+
+
+        (GET "/:id" []
+          :path-params [id]
+          :summary "Get category by id"
+          (def getCategoryById (get-category id))
+          (if getCategoryById (ok getCategoryById) (not-found))
+        )
+
+          
+        (POST "/" []
+          :summary "Create new category"
+          :body [category NewCategory]
+          (def result (create-category category))
+          (if (= (type result) java.lang.String) 
+            (bad-request result)
+            (ok result) 
+          )
+        )
+
+        (DELETE "/:id" []
+          :summary "Delete category"
+          :path-params [id]
+          (def result (delete-category id))
+          (if (= (type result) java.lang.String) 
+            (bad-request result)
+            (ok nil) 
+          )
+        )
+
+        (PUT "/:id" []
+          :summary "Update category"
+          :path-params [id]
+          :body [category NewCategory]
+          (def result (update-category id category))
+          (if (= (type result) java.lang.Integer) 
+            (ok nil) 
+            (bad-request result)
+          )
+        )
+      )
     )
   )
+    

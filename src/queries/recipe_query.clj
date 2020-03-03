@@ -52,7 +52,6 @@
   )
 
   (defn update-recipe [id recipeUpdated]
-    (def foundRecipe (get-recipe id))
     (def foundRecipeName (get-by-name (get recipeUpdated :name)))
     (def foundCategory (get-category (get recipeUpdated :categoryId)))
     (if foundRecipeName 

@@ -8,4 +8,4 @@
     :description        String
   })
   
-  
+  (s/defschema NewCategory (dissoc Category :id))
