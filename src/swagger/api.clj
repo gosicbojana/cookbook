@@ -58,7 +58,7 @@
           (def result (delete-recipe id))
           (if (= (type result) java.lang.String) 
             (bad-request result)
-            (ok nil) 
+            (ok "Recipe successfully deleted") 
           )
         )
 
@@ -68,7 +68,7 @@
           :body [recipe NewRecipe]
           (def result (update-recipe id recipe))
           (if (= (type result) java.lang.Integer) 
-            (ok nil) 
+            (ok "Recipe successfully updated") 
             (bad-request result)
           )
         )
@@ -108,7 +108,7 @@
           (def result (delete-category id))
           (if (= (type result) java.lang.String) 
             (bad-request result)
-            (ok nil) 
+            (ok "Category successfully deleted") 
           )
         )
 
@@ -118,7 +118,7 @@
           :body [category NewCategory]
           (def result (update-category id category))
           (if (= (type result) java.lang.Integer) 
-            (ok nil) 
+            (ok "Category successfully updated") 
             (bad-request result)
           )
         )
