@@ -127,7 +127,7 @@
       (context "/users" []
         :tags ["users"]
   
-        (GET "/" []
+        (GET "/get-all" []
           :return [User]
           :summary "Gets existing users"
           (ok (get-users))
@@ -138,6 +138,24 @@
           :summary "Get user by id"
           (def getUserById (get-user id))
           (if getUserById (ok getUserById) (not-found))
+        )
+
+      
+        (GET "/" []
+          :query-params [username]
+          :summary "Get user by username"
+          (def getUserByUsername (get-user-by-username username))
+          (if getUserByUsername (ok getUserByUsername) (not-found))
+        )
+
+        (POST "/" []
+          :summary "Create new user"
+          :body [user NewUser]
+          (def result (create-user user))
+          (if (= (type result) java.lang.String) 
+            (bad-request result)
+            (ok result) 
+          )
         )
       )
     )
