@@ -2,9 +2,11 @@
     (:require [compojure.api.sweet :refer :all]
               [ring.util.http-response :refer :all]
               [domain.recipe :refer :all]
-              [queries.recipe_query :refer :all]
               [domain.category :refer :all]
+              [domain.user :refer :all]
               [queries.category_query :refer :all]
+              [queries.recipe_query :refer :all]
+              [queries.user_query :refer :all]
     )
 )
   
@@ -119,6 +121,23 @@
             (ok nil) 
             (bad-request result)
           )
+        )
+      )
+
+      (context "/users" []
+        :tags ["users"]
+  
+        (GET "/" []
+          :return [User]
+          :summary "Gets existing users"
+          (ok (get-users))
+        )
+    
+        (GET "/:id" []
+          :path-params [id]
+          :summary "Get user by id"
+          (def getUserById (get-user id))
+          (if getUserById (ok getUserById) (not-found))
         )
       )
     )
