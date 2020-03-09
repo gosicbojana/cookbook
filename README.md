@@ -6,6 +6,8 @@ Copyright © 2020 Bojana Gosic 2019/3707
 Cookbook project is written in Clojure as student's assignment for university subject. Cookbook is an API for managing recipes, using Swagger. 
 Using this application you will be able to manage recipes for different food categories. Apart from that you have possibility to work with different users.
 
+When you access application you will see three differrent sections, recipes, categories and users. As a user of an API you can manage users and also search users by its username. After that you can work with recipes, by adding new recipes, updating existing ones, deleting recipes and also searching them by id or listing all recipes based on its category for easier using of cookbook. User is also able to add, change or delete existing categories.
+
 # What do you need to run project?
 
 You will need to instal Java, Java 1.8.0 is preffered version along with MySql. For installing Leiningen please refer to their's 
