@@ -4,7 +4,7 @@ Copyright © 2020 Bojana Gosic 2019/3707
 
 # Project description
 Cookbook project is written in Clojure as student's assignment for university subject. Cookbook is an API for managing recipes, using Swagger. 
-Using this application you will be able to manage recipes for different food categories. 
+Using this application you will be able to manage recipes for different food categories. Apart from that you have possibility to work with different users.
 
 # What do you need to run project?
 

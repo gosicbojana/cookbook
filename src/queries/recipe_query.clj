@@ -28,6 +28,16 @@
     )
   )
 
+  (defn get-recipes-by-category [id]
+    (def foundRecipesCategory (get-category id))
+    (if foundRecipesCategory 
+      (select recipe
+        (where {::categoryId [= id]} )
+      )
+      "Category with specified id doesn't exist"
+    )
+  )  
+
   (defn create-recipe [newRecipe]
     (def foundRecipe (get-by-name (get newRecipe :name)))
     (def foundCategory (get-category (get newRecipe :categoryId)))

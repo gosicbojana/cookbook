@@ -41,6 +41,12 @@
           (if getRecipeById (ok getRecipeById) (not-found "Recipe not found"))
         )
 
+        (GET "/:id/category" []
+          :path-params [id]
+          :summary "Get all recipes in one category"
+          (def getRecipesByCategory (get-recipes-by-category id))
+          (if getRecipesByCategory (ok getRecipesByCategory))
+        )
           
         (POST "/" []
           :summary "Create recipe"
