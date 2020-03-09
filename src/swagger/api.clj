@@ -38,7 +38,7 @@
           :path-params [id]
           :summary "Get recipe by id"
           (def getRecipeById (get-recipe id))
-          (if getRecipeById (ok getRecipeById) (not-found))
+          (if getRecipeById (ok getRecipeById) (not-found "Recipe not found"))
         )
 
           
@@ -88,7 +88,7 @@
           :path-params [id]
           :summary "Get category by id"
           (def getCategoryById (get-category id))
-          (if getCategoryById (ok getCategoryById) (not-found))
+          (if getCategoryById (ok getCategoryById) (not-found "Category not found"))
         )
 
           
@@ -137,14 +137,14 @@
           :path-params [id]
           :summary "Get user by id"
           (def getUserById (get-user id))
-          (if getUserById (ok getUserById) (not-found))
+          (if getUserById (ok getUserById) (not-found "User not found"))
         )
 
         (GET "/" []
           :query-params [username]
           :summary "Get user by username"
           (def getUserByUsername (get-user-by-username username))
-          (if getUserByUsername (ok getUserByUsername) (not-found))
+          (if getUserByUsername (ok getUserByUsername) (not-found "User with specified username is not found!"))
         )
 
         (POST "/" []
@@ -163,7 +163,7 @@
           (def result (delete-user id))
           (if (= (type result) java.lang.String) 
             (bad-request result)
-            (ok nil) 
+            (ok "User successfully deleted") 
           )
         )
 
