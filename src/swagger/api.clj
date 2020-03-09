@@ -140,7 +140,6 @@
           (if getUserById (ok getUserById) (not-found))
         )
 
-      
         (GET "/" []
           :query-params [username]
           :summary "Get user by username"
@@ -157,6 +156,27 @@
             (ok result) 
           )
         )
+
+        (DELETE "/:id" []
+          :summary "Delete user"
+          :path-params [id]
+          (def result (delete-user id))
+          (if (= (type result) java.lang.String) 
+            (bad-request result)
+            (ok nil) 
+          )
+        )
+
+        (PUT "/:id" []
+          :summary "Update user"
+          :path-params [id]
+          :body [user NewUser]
+          (def result (update-user id user))
+          (if (= (type result) java.lang.Integer) 
+            (ok "Successfully updated") 
+            (bad-request result)
+          )
+        )      
       )
     )
   )

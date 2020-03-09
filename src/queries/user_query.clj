@@ -41,4 +41,33 @@
       )
     )
   )
+
+  (defn update-user [id userUpdated]
+    (def foundUser (get-user id))
+    (def existingUserByUsername (get-user-by-username (get userUpdated :username)))
+    (if foundUser 
+      (if (and existingUserByUsername (not= id (get existingUserByUsername :id))) 
+        "User already exists"
+        (update user
+          (set-fields {
+            :firstName (get userUpdated :firstName)
+            :lastName (get userUpdated :lastName)
+            :username (get userUpdated :username)
+            :password (get userUpdated :password)
+          })
+          (where {:id [= id]}))
+      )
+      "User with supplied Id doesn't exist"
+    )
+  )
+            
+  (defn delete-user [id]
+    (def foundUser (get-user id))
+    (if foundUser 
+      (delete user
+        (where {:id [= id]}))
+      "User with supplied id doesn't exist"
+    )
+  )
+  
         
